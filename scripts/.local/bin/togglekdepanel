@@ -1,0 +1,2 @@
+# credit: https://gist.github.com/jmz-b/c984170b09f2be823a8a9e2d9178c3c9
+qdbus org.kde.plasmashell /PlasmaShell evaluateScript "p = panelById(panelIds[0]); p.height = 36 - p.height;"
