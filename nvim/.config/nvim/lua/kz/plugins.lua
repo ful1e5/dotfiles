@@ -1,4 +1,4 @@
--- Auto source when there are changes in kz/plugins.lua
+-- Auto source when there are changes in plugins.lua
 local group = vim.api.nvim_create_augroup('PackerGroup', { clear = true })
 vim.api.nvim_create_autocmd('BufWritePost', {
   pattern = 'plugins.lua',
@@ -126,9 +126,11 @@ require('packer').startup({
 
     -- Treesitter
     use({
+      { 'nvim-treesitter/nvim-treesitter' },
+
       {
-        'nvim-treesitter/nvim-treesitter',
-        require = { 'nvim-treesitter/playground' },
+        'nvim-treesitter/playground',
+        require = { 'nvim-treesitter/nvim-treesitter' },
         run = ':TSUpdate',
         config = function()
           require('kz.plugins.nvim-treesitter')
@@ -230,7 +232,7 @@ require('packer').startup({
     use({
       'kylechui/nvim-surround',
       config = function()
-        require('nvim-surround').setup({})
+        require('kz.plugins.nvim-surround')
       end,
     })
 

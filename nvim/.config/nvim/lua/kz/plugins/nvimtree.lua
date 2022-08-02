@@ -7,7 +7,7 @@ if installed then
 end
 
 glyphs.git = {
-  unstaged = '',
+  unstaged = '',
   staged = '',
   unmerged = '',
   renamed = '',

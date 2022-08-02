@@ -1,5 +1,5 @@
-vim.o.background = 'dark'
 require('caret').setup({
-  invert_selection = false,
+  invert_selection = true,
   inverse = false,
+  toggle_bg_key = '<space>bg',
 })

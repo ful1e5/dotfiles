@@ -30,6 +30,7 @@ alias logout="loginctl terminate-user $USER"
 # alias gscele="VERBOSE=true OUTPUT_DIR=./.output ./Github/grab-song/grab-song.sh"
 
 # dotfiles
+alias .f="cd ~/.dotfiles"
 alias .fish="cd ~/.dotfiles/fish/.config/fish && nvim config.fish"
 alias .nvim="cd ~/.dotfiles/nvim/.config/nvim && nvim lua/kz/plugins.lua"
 alias .packer="cd ~/.local/share/nvim/site/pack/packer"
