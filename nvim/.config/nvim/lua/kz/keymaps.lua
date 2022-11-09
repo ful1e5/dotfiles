@@ -22,6 +22,10 @@ map('i', '<A-k>', '<Esc>:m .-2<CR>==gi', opts)
 map('v', '<A-j>', ":m '>+1<CR>gv=gv", opts)
 map('v', '<A-k>', ":m '<-2<CR>gv=gv", opts)
 
+-- Increment/decrement
+map('n', '=', '<C-a>')
+map('n', '-', '<C-x>')
+
 -- Buffer
 map('n', '<space><Esc>', ':bd<CR>', opts)
 map('n', '<C-l>', ':%bd!<CR>', opts)

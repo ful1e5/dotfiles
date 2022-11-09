@@ -44,7 +44,6 @@ require('packer').startup({
         -- LSP Support
         { 'neovim/nvim-lspconfig' },
         { 'williamboman/mason-lspconfig.nvim' },
-
         -- Autocompletion
         { 'hrsh7th/nvim-cmp' },
         { 'hrsh7th/cmp-buffer' },
@@ -57,6 +56,9 @@ require('packer').startup({
 
         -- Snippets
         { 'rafamadriz/friendly-snippets' },
+
+        -- vscode-like pictograms
+        { 'onsails/lspkind.nvim' },
       },
       config = function()
         -- Configuring LSP

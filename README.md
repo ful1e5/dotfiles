@@ -2,15 +2,15 @@
 
 My Minimal Configuration for Archlinux, neovim, fish-shell and more.
 
-![screenshot](./screenshot.png)
+![screenshot](https://imgur.com/WAg4xDf.png)
 
 ## Tools that I use
 
 - [Arch Linux](https://archlinux.org/) - Operating System
 - [KDE plasma desktop](https://kde.org/plasma-desktop/) - Desktop Environment
-- [The Field](https://www.reddit.com/r/wallpaper/comments/vmc9fw/the_field_3840x2160/) - Wallpaper
+- Wallpaper - Plain Color `#141618`
 - [Konsole](https://konsole.kde.org/) - Terminal
-- Check [fontconfig](fontconfig/.fonts.conf) for Fonts
+- [Ligatured-Hack](https://github.com/gaplo917/Ligatured-Hack) - Font
 - [fish](https://fishshell.com/) + [custom fish prompt](./fish/.config/fish/functions/) +
   [fisher](https://github.com/jorgebucaran/fisher) and various [other plugins](./fish/.config/fish/fish_plugins)
 - [wl-clipboard-manager](https://github.com/bugaevc/wl-clipboard) - clipboard manager for Wayland.

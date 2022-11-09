@@ -24,14 +24,7 @@ M.setup = function()
 
   -- set border in lspconfig
   -- https://neovim.discourse.group/t/lspinfo-window-border/1566/5
-  local win = require('lspconfig.ui.windows')
-  local _default_opts = win.default_opts
-
-  win.default_opts = function(options)
-    local opts = _default_opts(options)
-    opts.border = 'rounded'
-    return opts
-  end
+  require('lspconfig.ui.windows').default_options.border = 'rounded'
 end
 
 return M

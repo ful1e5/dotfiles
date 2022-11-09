@@ -6,7 +6,7 @@ local servers = {
   'cssls',
   'jsonls',
   'yamlls',
-  -- "taplo",
+  'taplo',
   'pyright',
   'sumneko_lua',
   'emmet_ls',

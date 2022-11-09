@@ -1,4 +1,5 @@
 local cmp = require('cmp')
+local lspkind = require('lspkind')
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -46,19 +47,13 @@ cmp.setup({
     ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
   },
   formatting = {
-    format = function(entry, vim_item)
-      -- set a name for each source
-      vim_item.menu = ({
-        cmp_git = '[git]',
-        vsnip = ' [snip]',
-        nvim_lsp = ' [lsp]',
-        nvim_lua = '[lua]',
-        path = '[path] ',
-        buffer = '[buff] ',
-        spell = '[spell]',
-      })[entry.source.name]
-      return vim_item
-    end,
+    format = lspkind.cmp_format({
+      mode = 'text_symbol',
+      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+      before = function(_, vim_item)
+        return vim_item
+      end,
+    }),
   },
   sources = {
     { name = 'nvim_lsp' },

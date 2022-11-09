@@ -23,11 +23,13 @@ local on_attach = function(client, bufnr)
 end
 
 null_ls.setup({
-  timeout = 20000,
+  timeout = -1,
   on_attach = on_attach,
   sources = {
     -- prettier
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettier.with({
+      extra_filetypes = { 'toml' },
+    }),
 
     -- fish
     null_ls.builtins.diagnostics.fish,

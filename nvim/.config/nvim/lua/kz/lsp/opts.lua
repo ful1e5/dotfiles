@@ -32,7 +32,7 @@ return {
         buf_set_keymap('n', '<F2>', function() vim.lsp.buf.rename() end, opts)
         buf_set_keymap('n', 'gr', function() vim.lsp.buf.references() end, opts)
         buf_set_keymap('n', '<space>ca', function() vim.lsp.buf.code_action() end, opts)
-        buf_set_keymap('n', '<space>e', "<cmd>lua vim.diagnostic.show_line_diagnostics({float={border='rounded'}})<CR>", opts)
+        buf_set_keymap('n', '<space>e',function () vim.diagnostic.open_float({ float={ border='rounded' } }) end, opts)
         buf_set_keymap('n', '[d', "<cmd>lua vim.diagnostic.goto_prev({float={border='rounded'}})<CR>", opts)
         buf_set_keymap('n', ']d', "<cmd>lua vim.diagnostic.goto_next({float={border='rounded'}})<CR>", opts)
         buf_set_keymap('n', '<space>q', function() vim.diagnostic.set_loclist() end, opts)
@@ -43,5 +43,5 @@ return {
 
     print('LSP Attached.')
   end,
-  capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+  capabilities = require('cmp_nvim_lsp').default_capabilities(),
 }

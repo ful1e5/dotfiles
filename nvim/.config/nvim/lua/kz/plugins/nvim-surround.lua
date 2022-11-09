@@ -1,9 +1,19 @@
 require('nvim-surround').setup({
-  delimiters = {
-    separators = {
-      ['|'] = { '|', '|' },
-      ['*'] = { '*', '*' },
-      ['_'] = { '_', '_' },
+  surrounds = {
+    ['|'] = {
+      add = function()
+        return { { '|' }, { '|' } }
+      end,
+    },
+    ['*'] = {
+      add = function()
+        return { { '*' }, { '*' } }
+      end,
+    },
+    ['_'] = {
+      add = function()
+        return { { '_' }, { '_' } }
+      end,
     },
   },
 })
