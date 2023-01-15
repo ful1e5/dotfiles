@@ -16,10 +16,10 @@ vim.opt.updatetime = 500
 -- Highlight Yank
 local group = vim.api.nvim_create_augroup('HighlightYank', { clear = true })
 vim.api.nvim_create_autocmd('TextYankPost', {
+  group = group,
   callback = function()
     vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
   end,
-  group = group,
 })
 
 -- syntax highlighting
@@ -38,13 +38,14 @@ vim.opt.conceallevel = 0 -- So that I can see `` in markdown files
 vim.opt.autoindent = true
 vim.g.smartintend = true
 -- control the number of space characters that will be inserted when the tab key is pressed
-vim.opt.tabstop = 4
-vim.opt.shiftwidth = 4
-vim.opt.softtabstop = 4
+vim.opt.tabstop = 2
+vim.opt.shiftwidth = 2
+vim.opt.softtabstop = 2
 -- insert space characters whenever the tab key is pressed
 vim.o.expandtab = true
 
--- don't wrap lines
+-- don't wrap default check `keymaps.lua` for conditional warp for some filetypes
+-- disable wrapping for all filetypes
 vim.opt.wrap = false
 
 -- search options
@@ -59,10 +60,10 @@ vim.opt.number = true
 vim.opt.relativenumber = true
 
 vim.wo.cursorline = true -- Enable highlighting of the current line
-vim.wo.signcolumn = 'yes' -- Always show the signcolumn, otherwise it would shift the text each time
+vim.wo.signcolumn = 'yes:2' -- Always show the signcolumn, otherwise it would shift the text each time
 
-vim.wo.scrolloff = 10
-vim.wo.sidescrolloff = 30
+vim.api.nvim_win_set_option(0, 'scrolloff', 10)
+vim.api.nvim_win_set_option(0, 'sidescrolloff', 30)
 
 vim.o.backup = false -- This is recommended by coc
 vim.o.swapfile = false
@@ -70,7 +71,7 @@ vim.o.writebackup = false -- This is recommended by coc
 
 -- whitespace characters
 vim.wo.list = true
-vim.opt.listchars = 'tab:→ ,trail:•,extends:»,precedes:«'
+vim.opt.listchars = { tab = '→ ', trail = '•', extends = '»', precedes = '«' }
 
 -- copy and paste with OS clipboard
 vim.opt.clipboard = 'unnamedplus'

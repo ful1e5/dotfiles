@@ -8,7 +8,8 @@
 -- %=                                             left/right separator
 -- %l/%L,%c                                       rownumber/total,colnumber
 -- %{&fileencoding?&fileencoding:&encoding}       file encoding
-vim.opt.statusline = '  %< %{FugitiveHead()}  %f %m %r %w %= Ln %l, Col %c  %{&fileencoding?&fileencoding:&encoding}  '
+vim.opt.statusline =
+  '  %< %{FugitiveHead()}  %f %m %r %w %= Ln %l, Col %c  %{&fileencoding?&fileencoding:&encoding}  '
 
 -- minimal statusline on start
 _G.laststatus = 0
@@ -22,4 +23,4 @@ vim.keymap.set('n', '<space>z', function()
     _G.laststatus = 0
   end
   vim.opt.laststatus = _G.laststatus
-end, { noremap = true, silent = true })
+end)

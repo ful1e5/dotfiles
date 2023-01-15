@@ -1,7 +1,10 @@
 -- Setup Custom visual to LSP
-require('kz.lsp.visual').setup()
+require('ful1e5.lsp.visual')
 
--- Setup LSP Servers
+-- Custom keymaps for LSP commands
+require('ful1e5.lsp.keymaps')
+
+-- LSP Servers
 local servers = {
   'cssls',
   'jsonls',
@@ -31,14 +34,16 @@ require('mason-lspconfig').setup({
   automatic_installation = true,
 })
 
--- Specify the default options which we'll use to setup all servers
-local default_opts = require('kz.lsp.opts')
+local lspconfig = require('lspconfig')
+local lsp_defaults = lspconfig.util.default_config
+lsp_defaults.capabilities =
+  vim.tbl_deep_extend('force', lsp_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
 
+-- Specify the default options which we'll use to setup all servers
 for _, name in ipairs(servers) do
   -- Enhance the default opts with the server-specific ones
   pcall(function()
-    require('kz.lsp.servers.' .. name).setup(default_opts)
+    lsp_defaults = require('ful1e5.lsp.servers.' .. name).setup()
   end)
-
-  require('lspconfig')[name].setup(default_opts)
+  lspconfig[name].setup(lsp_defaults)
 end

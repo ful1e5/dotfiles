@@ -1,4 +1,4 @@
-local lsp_opts = require('kz.lsp.opts')
+local lsp_opts = require('ful1e5.lsp.opts')
 
 require('flutter-tools').setup({
   ui = { border = 'rounded' },
@@ -20,10 +20,6 @@ vim.api.nvim_create_autocmd('BufWrite', {
 })
 
 -- Flutter Extension
-local opts = { noremap = true, silent = true }
-local map = vim.keymap.set
 
 require('telescope').load_extension('flutter')
-map('n', '<spcae>fr', function()
-  require('telescope').extensions.flutter.commands()
-end, opts)
+vim.keymap.set('n', '<spcae>fr', require('telescope').extensions.flutter.commands)

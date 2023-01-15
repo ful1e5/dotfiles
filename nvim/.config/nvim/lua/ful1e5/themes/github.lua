@@ -17,5 +17,3 @@ require('github-theme').setup({
   end,
   dev = true,
 })
-
--- require('lualine').setup({ options = { theme = 'auto' } })

@@ -10,7 +10,6 @@ My Minimal Configuration for Archlinux, neovim, fish-shell and more.
 - [KDE plasma desktop](https://kde.org/plasma-desktop/) - Desktop Environment
 - Wallpaper - Plain Color `#141618`
 - [Konsole](https://konsole.kde.org/) - Terminal
-- [Ligatured-Hack](https://github.com/gaplo917/Ligatured-Hack) - Font
 - [fish](https://fishshell.com/) + [custom fish prompt](./fish/.config/fish/functions/) +
   [fisher](https://github.com/jorgebucaran/fisher) and various [other plugins](./fish/.config/fish/fish_plugins)
 - [wl-clipboard-manager](https://github.com/bugaevc/wl-clipboard) - clipboard manager for Wayland.

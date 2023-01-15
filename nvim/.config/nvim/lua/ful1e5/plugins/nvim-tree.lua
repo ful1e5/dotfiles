@@ -7,13 +7,13 @@ if installed then
 end
 
 glyphs.git = {
-  unstaged = '',
-  staged = '',
+  unstaged = '',
+  staged = '',
   unmerged = '',
   renamed = '',
-  untracked = '',
+  untracked = '',
   deleted = '',
-  ignored = '◌',
+  ignored = '',
 }
 
 require('nvim-tree').setup({
@@ -45,6 +45,4 @@ require('nvim-tree').setup({
 })
 
 -- Mappings
-vim.keymap.set('n', '<C-b>', function()
-  require('nvim-tree').toggle()
-end, { noremap = true, silent = true })
+vim.keymap.set('n', '<C-b>', vim.cmd.NvimTreeToggle)

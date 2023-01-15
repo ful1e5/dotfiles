@@ -48,19 +48,12 @@ local project_files = function()
 end
 
 local map = vim.keymap.set
-local opts = { noremap = true, silent = true }
 
 -- Custom key-binding
--- stylua: ignore start
-map('n', '<space>vrc', function() nvim_rc() end, opts)
-map('n', '<C-p>', function() project_files() end, opts)
+map('n', '<space>vrc', nvim_rc)
+map('n', '<C-p>', project_files)
 
 -- Builtin key-binding
-map('n', '<space>help', function() return require('telescope.builtin').help_tags() end, opts)
-map('n', '<space>man', function() return require('telescope.builtin').man_pages() end, opts)
-map('n', '<space>=', function() return require('telescope.builtin').spell_suggest() end, opts)
-map('n', '<space>hi', function() return require('telescope.builtin').highlights() end, opts)
-map('n', '<space>reg', function() return require('telescope.builtin').registers() end, opts)
-map('n', '<space>pf', function() return require('telescope.builtin').live_grep() end, opts)
-
--- stylua: ignore end
+map('n', '<C-f>', require('telescope.builtin').live_grep)
+map('n', '<f1>', require('telescope.builtin').help_tags)
+map('n', 'z=', require('telescope.builtin').spell_suggest)

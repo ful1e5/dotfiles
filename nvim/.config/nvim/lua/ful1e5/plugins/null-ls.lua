@@ -12,6 +12,7 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format({
+          timeout = -10,
           filter = function(c)
             return c.name == 'null-ls'
           end,
@@ -23,7 +24,7 @@ local on_attach = function(client, bufnr)
 end
 
 null_ls.setup({
-  timeout = -1,
+  timeout = -10,
   on_attach = on_attach,
   sources = {
     -- prettier
@@ -43,7 +44,9 @@ null_ls.setup({
     null_ls.builtins.formatting.black,
 
     -- xml
-    null_ls.builtins.formatting.xmllint,
+    null_ls.builtins.formatting.xmllint.with({
+      extra_filetypes = { 'svg' },
+    }),
   },
   debug = true,
 })

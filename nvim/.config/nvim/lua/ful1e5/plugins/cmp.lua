@@ -15,6 +15,9 @@ cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
+    winhighlight = 'Normal:Pmenu,FloatBorder:Pmenu,Search:None',
+    col_offset = -3,
+    side_padding = 0,
   },
   snippet = {
     expand = function(args)
@@ -22,8 +25,8 @@ cmp.setup({
     end,
   },
   mapping = {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ['<C-Up>'] = cmp.mapping.scroll_docs(-4),
+    ['<C-Down>'] = cmp.mapping.scroll_docs(4),
     ['<C-e>'] = cmp.mapping.close(),
     ['<C-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -47,13 +50,15 @@ cmp.setup({
     ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
   },
   formatting = {
-    format = lspkind.cmp_format({
-      mode = 'text_symbol',
-      maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-      before = function(_, vim_item)
-        return vim_item
-      end,
-    }),
+    fields = { 'kind', 'abbr', 'menu' },
+    format = function(entry, vim_item)
+      local kind = require('lspkind').cmp_format({ mode = 'symbol_text', maxwidth = 50 })(entry, vim_item)
+      local strings = vim.split(kind.kind, '%s', { trimempty = true })
+      kind.kind = ' ' .. (strings[1] or '') .. ' '
+      kind.menu = '    (' .. (strings[2] or '') .. ')'
+
+      return kind
+    end,
   },
   sources = {
     { name = 'nvim_lsp' },
