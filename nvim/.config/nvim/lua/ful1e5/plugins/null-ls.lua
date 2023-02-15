@@ -12,7 +12,7 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format({
-          timeout = -10,
+          timeout = 10000,
           filter = function(c)
             return c.name == 'null-ls'
           end,
@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
 end
 
 null_ls.setup({
-  timeout = -10,
+  timeout = 10000,
   on_attach = on_attach,
   sources = {
     -- prettier

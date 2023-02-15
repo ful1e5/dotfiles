@@ -1,9 +1,6 @@
 -- Setup Custom visual to LSP
 require('ful1e5.lsp.visual')
 
--- Custom keymaps for LSP commands
-require('ful1e5.lsp.keymaps')
-
 -- LSP Servers
 local servers = {
   'cssls',
@@ -11,7 +8,7 @@ local servers = {
   'yamlls',
   'taplo',
   'pyright',
-  'sumneko_lua',
+  'lua_ls',
   'emmet_ls',
   'tsserver',
   'esbonio',
@@ -45,5 +42,6 @@ for _, name in ipairs(servers) do
   pcall(function()
     lsp_defaults = require('ful1e5.lsp.servers.' .. name).setup()
   end)
+
   lspconfig[name].setup(lsp_defaults)
 end

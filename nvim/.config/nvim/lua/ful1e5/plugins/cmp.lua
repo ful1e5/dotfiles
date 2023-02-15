@@ -1,13 +1,12 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
 
+local luasnip = require('luasnip')
+require('luasnip.loaders.from_vscode').lazy_load()
+
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
   return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match('%s') == nil
-end
-
-local feedkey = function(key, mode)
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
 end
 
 cmp.setup({
@@ -21,7 +20,7 @@ cmp.setup({
   },
   snippet = {
     expand = function(args)
-      vim.fn['vsnip#anonymous'](args.body)
+      require('luasnip').lsp_expand(args.body)
     end,
   },
   mapping = {
@@ -31,19 +30,19 @@ cmp.setup({
     ['<C-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
-      elseif vim.fn['vsnip#available'](1) == 1 then
-        feedkey('<Plug>(vsnip-expand-or-jump)', '')
       elseif has_words_before() then
         cmp.complete()
       else
-        fallback() -- The fallback function sends a already mapped key. In this case, it's probably `<Tab>`.
+        fallback()
       end
     end, { 'i', 's' }),
-    ['<C-p>'] = cmp.mapping(function()
+    ['<C-p>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_prev_item()
-      elseif vim.fn['vsnip#jumpable'](-1) == 1 then
-        feedkey('<Plug>(vsnip-jump-prev)', '')
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
       end
     end, { 'i', 's' }),
     ['<C-Space>'] = cmp.mapping.complete(),
@@ -52,7 +51,7 @@ cmp.setup({
   formatting = {
     fields = { 'kind', 'abbr', 'menu' },
     format = function(entry, vim_item)
-      local kind = require('lspkind').cmp_format({ mode = 'symbol_text', maxwidth = 50 })(entry, vim_item)
+      local kind = lspkind.cmp_format({ mode = 'symbol_text', maxwidth = 50 })(entry, vim_item)
       local strings = vim.split(kind.kind, '%s', { trimempty = true })
       kind.kind = ' ' .. (strings[1] or '') .. ' '
       kind.menu = '    (' .. (strings[2] or '') .. ')'
@@ -61,12 +60,12 @@ cmp.setup({
     end,
   },
   sources = {
+    { name = 'luasnip' },
     { name = 'nvim_lsp' },
     { name = 'nvim_lua' },
-    { name = 'vsnip' },
     { name = 'path' },
     { name = 'spell' },
-    { name = 'buffer', keyword_length = 5 },
+    { name = 'buffer' },
   },
   experimental = { ghost_text = true },
 })

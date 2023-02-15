@@ -33,27 +33,25 @@ require('telescope').setup({
 -- To get fzf loaded and working with telescope
 require('telescope').load_extension('fzf')
 
-local dotfile_dir = '$HOME/.dotfiles'
-
-local nvim_rc = function()
-  require('telescope.builtin').find_files({ prompt_title = '~ VimRC ~', cwd = dotfile_dir .. '/nvim/.config/nvim' })
-end
-
-local project_files = function()
-  local opt = {} -- define here if you want to define something
-  local ok = pcall(require('telescope.builtin').git_files, opt)
-  if not ok then
-    require('telescope.builtin').find_files(opt)
-  end
-end
+local builtin = require('telescope.builtin')
 
 local map = vim.keymap.set
 
 -- Custom key-binding
-map('n', '<space>vrc', nvim_rc)
-map('n', '<C-p>', project_files)
+map('n', '<space>vrc', function()
+  return builtin.find_files({ prompt_title = '~ VimRC ~', cwd = '$HOME/.dotfiles/nvim/.config/nvim/' })
+end)
+
+map('n', '<C-p>', function()
+  local in_git_repo = vim.fn.systemlist('git rev-parse --is-inside-work-tree')[1] == 'true'
+  if in_git_repo then
+    return builtin.git_files()
+  else
+    return builtin.find_files()
+  end
+end)
 
 -- Builtin key-binding
-map('n', '<C-f>', require('telescope.builtin').live_grep)
-map('n', '<f1>', require('telescope.builtin').help_tags)
-map('n', 'z=', require('telescope.builtin').spell_suggest)
+map('n', '<C-f>', builtin.live_grep)
+map('n', '<f1>', builtin.help_tags)
+map('n', 'z=', builtin.spell_suggest)

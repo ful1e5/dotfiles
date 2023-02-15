@@ -14,7 +14,7 @@ require('packer').startup({
     -- Profiling
     use({
       'dstein64/vim-startuptime',
-      config = function()
+      setup = function()
         vim.keymap.set('n', '<space>st', vim.cmd.StartupTime)
       end,
     })
@@ -52,41 +52,43 @@ require('packer').startup({
       { 'nanotee/luv-vimdocs' },
     })
 
+    -- LSP
+    use({
+      'williamboman/mason.nvim',
+      event = 'BufRead',
+      requires = {
+        { 'neovim/nvim-lspconfig' },
+        { 'williamboman/mason-lspconfig.nvim' },
+        { 'hrsh7th/cmp-nvim-lsp' },
+      },
+      config = function()
+        pcall(require, 'ful1e5.lsp.mason')
+      end,
+    })
+
     -- Autocompletion
     use({
       'hrsh7th/nvim-cmp',
       event = 'BufRead',
       requires = {
+        -- vscode-like pictograms
+        { 'onsails/lspkind.nvim' },
+
+        -- Snippet Engine
+        { 'L3MON4D3/LuaSnip', tag = 'v1.2.1', run = 'make install_jsregexp' },
+
+        -- vacode-like snippets
+        { 'rafamadriz/friendly-snippets', event = 'InsertCharPre' },
+
+        -- nvim-cmp plugins
         { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
         { 'f3fora/cmp-spell', after = 'nvim-cmp' },
-        { 'hrsh7th/cmp-vsnip', after = 'nvim-cmp' },
-        { 'hrsh7th/vim-vsnip', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-
-        -- Snippets
-        { 'rafamadriz/friendly-snippets', event = 'InsertCharPre' },
-
-        -- vscode-like pictograms
-        { 'onsails/lspkind.nvim' },
+        { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       },
       config = function()
         pcall(require, 'ful1e5.plugins.cmp')
-      end,
-    })
-
-    -- LSP
-    use({
-      'neovim/nvim-lspconfig',
-      event = 'BufRead',
-      after = 'nvim-cmp',
-      requires = {
-        { 'hrsh7th/cmp-nvim-lsp' },
-        { 'williamboman/mason.nvim' },
-        { 'williamboman/mason-lspconfig.nvim' },
-      },
-      config = function()
-        pcall(require, 'ful1e5.lsp.mason')
       end,
     })
 
@@ -111,7 +113,7 @@ require('packer').startup({
     use({
       'nvim-tree/nvim-tree.lua',
       event = 'BufEnter',
-      requires = { 'kyazdani42/nvim-web-devicons', '~/GitHub/projekt0n/circles.nvim' },
+      requires = { 'nvim-tree/nvim-web-devicons', '~/GitHub/projekt0n/circles.nvim' },
       config = function()
         pcall(require, 'ful1e5.plugins.nvim-tree')
       end,
@@ -226,6 +228,15 @@ require('packer').startup({
       end,
     })
 
+    -- Markdown Shortcuts
+    use({
+      '~/GitHub/markdowny.nvim',
+      -- 'antonk52/markdowny.nvim',
+      config = function()
+        require('markdowny').setup({ filetypes = { 'markdown', 'txt' } })
+      end,
+    })
+
     -- Surround
     use({
       'kylechui/nvim-surround',
@@ -239,7 +250,7 @@ require('packer').startup({
     use({ 'lilydjwg/colorizer', event = 'CursorHold' })
 
     -- ASCII tree
-    use({ 'cloudysake/asciitree.nvim' })
+    use({ 'cloudysake/asciitree.nvim', event = 'BufRead' })
 
     -- Comment
     use({

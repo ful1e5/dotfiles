@@ -45,4 +45,4 @@ require('nvim-tree').setup({
 })
 
 -- Mappings
-vim.keymap.set('n', '<C-b>', vim.cmd.NvimTreeToggle)
+vim.keymap.set('n', '<C-b>', vim.cmd.NvimTreeToggle, { silent = true })

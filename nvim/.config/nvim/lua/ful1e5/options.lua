@@ -1,8 +1,8 @@
--- Disable mouse
-vim.opt.mouse = ''
-
 -- Leader key
 vim.g.mapleader = ' '
+
+-- Disable mouse
+vim.opt.mouse = ''
 
 -- Block cursor always
 vim.opt.guicursor = 'i:block'
@@ -13,16 +13,7 @@ vim.opt.spell = true
 -- quicker update
 vim.opt.updatetime = 500
 
--- Highlight Yank
-local group = vim.api.nvim_create_augroup('HighlightYank', { clear = true })
-vim.api.nvim_create_autocmd('TextYankPost', {
-  group = group,
-  callback = function()
-    vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
-  end,
-})
-
--- syntax highlighting
+-- Terminal colors
 vim.opt.termguicolors = true
 vim.g.t_Co = 256
 
@@ -34,7 +25,7 @@ vim.opt.cmdheight = 1 -- Less space for displaying messages
 
 vim.opt.conceallevel = 0 -- So that I can see `` in markdown files
 
--- 4-Space Intend
+-- 2-Space Intend
 vim.opt.autoindent = true
 vim.g.smartintend = true
 -- control the number of space characters that will be inserted when the tab key is pressed

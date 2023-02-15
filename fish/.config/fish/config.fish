@@ -4,6 +4,9 @@ set fish_greeting
 # vi mode
 fish_vi_key_bindings
 
+# Show branch name in biscuit prompt
+set biscuit_show_branch_name 1
+
 # fzf config
 set -g FZF_COMPLETE 2 # allows walking candidates with TAB
 set -U FZF_DISABLE_KEYBINDINGS 1 # disable fzf.fish default keybindings
