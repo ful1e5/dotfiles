@@ -88,6 +88,7 @@ require('packer').startup({
         { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       },
       config = function()
+        pcall(require, 'ful1e5.plugins.luasnip')
         pcall(require, 'ful1e5.plugins.cmp')
       end,
     })

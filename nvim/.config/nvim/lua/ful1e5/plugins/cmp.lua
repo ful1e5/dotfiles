@@ -1,8 +1,6 @@
 local cmp = require('cmp')
 local lspkind = require('lspkind')
-
 local luasnip = require('luasnip')
-require('luasnip.loaders.from_vscode').lazy_load()
 
 local has_words_before = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -30,6 +28,8 @@ cmp.setup({
     ['<C-n>'] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
       elseif has_words_before() then
         cmp.complete()
       else
@@ -49,15 +49,7 @@ cmp.setup({
     ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
   },
   formatting = {
-    fields = { 'kind', 'abbr', 'menu' },
-    format = function(entry, vim_item)
-      local kind = lspkind.cmp_format({ mode = 'symbol_text', maxwidth = 50 })(entry, vim_item)
-      local strings = vim.split(kind.kind, '%s', { trimempty = true })
-      kind.kind = ' ' .. (strings[1] or '') .. ' '
-      kind.menu = '    (' .. (strings[2] or '') .. ')'
-
-      return kind
-    end,
+    format = lspkind.cmp_format(),
   },
   sources = {
     { name = 'luasnip' },
@@ -65,7 +57,7 @@ cmp.setup({
     { name = 'nvim_lua' },
     { name = 'path' },
     { name = 'spell' },
-    { name = 'buffer' },
+    { name = 'buffer', option = { keyword_length = 5 } },
   },
   experimental = { ghost_text = true },
 })
