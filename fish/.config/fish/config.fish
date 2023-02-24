@@ -4,6 +4,22 @@ set fish_greeting
 # vi mode
 fish_vi_key_bindings
 
+# Python
+alias p="python"
+
+# Cargo
+# set -x PATH "$HOME/.cargo/bin" $PATH
+
+# Flutter
+# set -x PATH ~/GitHub/flutter/bin $PATH
+
+# Pyenv
+status is-login; and pyenv init --path | source
+status is-interactive; and pyenv init - | source
+
+# Bob
+set -x PATH ~/.local/share/bob/nvim-bin $PATH
+
 # Show branch name in biscuit prompt
 set biscuit_show_branch_name 1
 
@@ -33,17 +49,3 @@ alias .f="cd ~/.dotfiles"
 alias .fish="cd ~/.dotfiles/fish/.config/fish && nvim config.fish"
 alias .nvim="cd ~/.dotfiles/nvim/.config/nvim && nvim lua/ful1e5/plugins.lua"
 alias .packer="cd ~/.local/share/nvim/site/pack/packer"
-
-#Python
-alias p="python"
-set -x PATH ~/.local/bin $PATH
-
-# Cargo
-# set -x PATH "$HOME/.cargo/bin" $PATH
-
-# Flutter
-# set -x PATH ~/GitHub/flutter/bin $PATH
-
-# Pyenv
-status is-login; and pyenv init --path | source
-status is-interactive; and pyenv init - | source
