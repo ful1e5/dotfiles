@@ -24,8 +24,6 @@ lua_ls.setup = function()
           library = vim.api.nvim_get_runtime_file('', true),
 
           checkThirdParty = false,
-          maxPreload = 2000,
-          preloadFileSize = 500,
         },
         -- Do not send telemetry data containing a randomized but unique identifier
         telemetry = { enable = false },

@@ -11,6 +11,14 @@ require('packer').startup({
     -- Packer
     use({ 'wbthomason/packer.nvim' })
 
+    -- Cache
+    use({
+      'lewis6991/impatient.nvim',
+      config = function()
+        require('impatient')
+      end,
+    })
+
     -- Profiling
     use({
       'dstein64/vim-startuptime',
@@ -178,7 +186,7 @@ require('packer').startup({
     use({
       {
         'tpope/vim-fugitive',
-        event = 'CursorHold',
+        event = 'BufRead',
         config = function()
           pcall(require, 'ful1e5.plugins.fugitive')
         end,
