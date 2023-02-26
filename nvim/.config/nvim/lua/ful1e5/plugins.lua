@@ -91,7 +91,6 @@ require('packer').startup({
         -- nvim-cmp plugins
         { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-        { 'f3fora/cmp-spell', after = 'nvim-cmp' },
         { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
         { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
       },
@@ -239,8 +238,7 @@ require('packer').startup({
 
     -- Markdown Shortcuts
     use({
-      '~/GitHub/markdowny.nvim',
-      -- 'antonk52/markdowny.nvim',
+      'antonk52/markdowny.nvim',
       config = function()
         require('markdowny').setup({ filetypes = { 'markdown', 'txt' } })
       end,

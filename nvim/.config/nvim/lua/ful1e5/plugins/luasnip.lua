@@ -41,9 +41,9 @@ ls.setup({
 })
 
 ls.add_snippets('lua', {
-  s('pt', { t('print('), i(1), t(')') }),
-  s('ipt', { t('print(vim.inspect({'), i(1), t('}))') }),
-  s('fn', { t('local '), i(1), t(' = function('), i(2), t({ ')', '\t' }), i(3), t({ '', 'end' }) }),
+  s('pt', { t('print('), i(1, '...'), t(')') }),
+  s('ipt', { t('print(vim.inspect({'), i(1, '...'), t('}))') }),
+  s('fn', { t('local '), i(1), t(' = function('), i(2, 'args'), t({ ')', '\t' }), i(3, '...'), t({ '', 'end' }) }),
   s('mfn', { t('M.'), i(1), t(' = function( '), i(2), t({ ')', '\t' }), i(3), t({ '', 'end' }) }),
 })
 

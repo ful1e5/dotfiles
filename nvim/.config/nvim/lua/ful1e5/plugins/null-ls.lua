@@ -12,7 +12,7 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format({
-          timeout = 10000,
+          timeout = -1,
           filter = function(c)
             return c.name == 'null-ls'
           end,
@@ -24,7 +24,7 @@ local on_attach = function(client, bufnr)
 end
 
 null_ls.setup({
-  timeout = 10000,
+  timeout = -1,
   on_attach = on_attach,
   sources = {
     -- prettier
@@ -34,6 +34,7 @@ null_ls.setup({
 
     -- fish
     null_ls.builtins.diagnostics.fish,
+    null_ls.builtins.formatting.fish_indent,
 
     -- lua
     null_ls.builtins.formatting.stylua,

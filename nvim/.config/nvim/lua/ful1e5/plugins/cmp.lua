@@ -5,7 +5,7 @@ local luasnip = require('luasnip')
 local c = {
   completion = {
     autocomplete = false,
-    completeopt = 'menuone,noinsert,noselect',
+    completeopt = 'menuone,preview,noinsert',
   },
   experimental = { ghost_text = true },
 }
@@ -47,6 +47,20 @@ c.mapping = {
       fallback()
     end
   end, { 'i', 's' }),
+  ['<Tab>'] = cmp.mapping(function(fallback)
+    if luasnip.expand_or_jumpable() then
+      luasnip.expand_or_jump()
+    else
+      fallback()
+    end
+  end, { 'i', 's' }),
+  ['<S-Tab>'] = cmp.mapping(function(fallback)
+    if luasnip.jumpable(-1) then
+      luasnip.jump(-1)
+    else
+      fallback()
+    end
+  end, { 'i', 's' }),
   ['<C-Space>'] = cmp.mapping.complete(),
   ['<C-y>'] = cmp.mapping.confirm({ behavior = cmp.ConfirmBehavior.Replace, select = true }),
 }
@@ -66,7 +80,6 @@ c.sources = {
   { name = 'nvim_lsp' },
   { name = 'nvim_lua' },
   { name = 'path' },
-  { name = 'spell' },
   { name = 'buffer', option = { keyword_length = 5 } },
 }
 
