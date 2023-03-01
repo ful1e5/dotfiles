@@ -1,0 +1,43 @@
+#!/bin/sh
+
+RATE=5
+LIMIT=150
+IS_MUTED=$(pacmd list-sinks | awk '/mute/ { print $2 }')
+SINK=@DEFAULT_SINK@
+
+volume_up() {
+	volume=$(pactl list sinks | perl -slne '
+    if (/^Sink #(\d+)$/) {
+        $cur_sink = $1;
+    } elsif (/^\s+Volume:.*? (\d+)% / && $SINK eq $cur_sink) {
+        print $1;
+    }
+' -- -sink="$SINK")
+	volume=$((volume + RATE))
+	volume=$((volume > LIMIT ? LIMIT : volume))
+	pactl set-sink-volume "$SINK" "$volume%"
+}
+
+volume_down() {
+	pactl set-sink-volume "$SINK" "-$RATE%"
+}
+
+toggle_mute() {
+	pactl set-sink-mute "$SINK" toggle
+}
+
+if [ "$1" = "up" ]; then
+	if [ "$IS_MUTED" = "yes" ]; then
+		toggle_mute
+	fi
+	volume_up
+elif [ "$1" = "down" ]; then
+	if [ "$IS_MUTED" = "yes" ]; then
+		toggle_mute
+	fi
+	volume_down
+elif [ "$1" = "toggle" ]; then
+	toggle_mute
+else
+	echo "No operation specified"
+fi

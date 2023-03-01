@@ -36,6 +36,10 @@ null_ls.setup({
     null_ls.builtins.diagnostics.fish,
     null_ls.builtins.formatting.fish_indent,
 
+    -- bash
+    null_ls.builtins.diagnostics.shellcheck,
+    null_ls.builtins.formatting.shfmt,
+
     -- lua
     null_ls.builtins.formatting.stylua,
 

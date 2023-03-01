@@ -2,7 +2,7 @@
   /* `otf-font-awesome` is required to be installed for icons */
   font-family: FontAwesome, Noto Sans CJK HK, sans-serif;
   font-weight: 500;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 window#waybar {
@@ -18,7 +18,7 @@ window#waybar.hidden {
 
 button {
   /* Use box-shadow instead of border so the text isn't offset */
-  box-shadow: inset 0 -3px transparent;
+  box-shadow: inset 0 0 transparent;
   /* Avoid rounded borders under each button name */
   border: none;
   border-radius: 0;
@@ -27,11 +27,11 @@ button {
 /* https://github.com/Alexays/Waybar/wiki/FAQ#the-workspace-buttons-have-a-strange-hover-effect */
 button:hover {
   background: inherit;
-  box-shadow: inset 0 -3px #ffffff;
+  box-shadow: inset 0 0 #ffffff;
 }
 
 #workspaces button {
-  padding: 0 5px;
+  padding: 0 10px;
   background-color: transparent;
   color: #ffffff;
 }
@@ -40,9 +40,8 @@ button:hover {
   background: rgba(0, 0, 0, 0.2);
 }
 
-#workspaces button.focused {
-  background-color: #64727d;
-  box-shadow: inset 0 -3px #ffffff;
+#workspaces button.active {
+  background-color: #2980b9;
 }
 
 #workspaces button.urgent {
@@ -62,6 +61,7 @@ button:hover {
 #temperature,
 #backlight,
 #network,
+#bluetooth,
 #pulseaudio,
 #wireplumber,
 #custom-media,
@@ -71,6 +71,7 @@ button:hover {
 #scratchpad,
 #mpd {
   padding: 0 5px;
+  border-radius: 5px;
   color: #ffffff;
 }
 
@@ -149,6 +150,14 @@ label:focus {
 
 #network.disconnected {
   background-color: #f53c3c;
+}
+
+#bluetooth {
+  background-color: #0082fc;
+}
+
+#bluetooth.off {
+  background-color: #808080;
 }
 
 #pulseaudio {

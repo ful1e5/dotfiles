@@ -1,0 +1,3 @@
+configuration {
+  font: "mono 14";
+}
