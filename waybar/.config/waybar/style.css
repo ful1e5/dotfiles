@@ -1,6 +1,6 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: FontAwesome, Noto Sans CJK HK, sans-serif;
+  font-family: sans-serif;
   font-weight: 500;
   font-size: 12px;
 }
@@ -31,6 +31,7 @@ button:hover {
 }
 
 #workspaces button {
+  font-weight: 900;
   padding: 0 10px;
   background-color: transparent;
   color: #ffffff;
@@ -92,7 +93,7 @@ button:hover {
 
 #clock {
   background-color: #64727d;
-  font-weight: 800;
+  font-weight: 900;
 }
 
 #battery {
@@ -155,7 +156,7 @@ label:focus {
 #bluetooth {
   background-color: #0082fc;
 }
-
+#bluetooth.disabled,
 #bluetooth.off {
   background-color: #808080;
 }
