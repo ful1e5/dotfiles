@@ -1,3 +1,5 @@
 configuration {
+  modes: [drun, run, combi];
   font: "mono 14";
+  combi-modes: [drun, run];
 }

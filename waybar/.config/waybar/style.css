@@ -66,6 +66,7 @@ button:hover {
 #pulseaudio,
 #wireplumber,
 #custom-media,
+#custom-rofi,
 #tray,
 #mode,
 #idle_inhibitor,
@@ -150,7 +151,8 @@ label:focus {
 }
 
 #network.disconnected {
-  background-color: #f53c3c;
+  /* background-color: #f53c3c; */
+  background-color: #808080;
 }
 
 #bluetooth {
@@ -192,6 +194,10 @@ label:focus {
 
 #custom-media.custom-vlc {
   background-color: #ffa000;
+}
+
+#custom-rofi {
+  padding: 0 8px;
 }
 
 #temperature {

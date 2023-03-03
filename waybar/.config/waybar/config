@@ -4,14 +4,19 @@
   "position": "top",
   "height": 24,
   "spacing": 5,
-  "modules-left": ["wlr/workspaces"],
-  "modules-center": [],
-  "modules-right": ["cpu", "memory", "pulseaudio", "network", "bluetooth",  "backlight",  "battery", "tray", "clock" ],
+  "modules-left": ["custom/rofi", "wlr/workspaces"],
+  "custom/rofi": {
+    "format": "  ",
+    "tooltip": false,
+    "on-click": "rofi -show combi",
+  },
   "wlr/workspaces": {
     "format": "{name}",
     "on-click": "activate",
     "sort-by-number": true
   },
+  "modules-center": [],
+  "modules-right": ["cpu", "memory", "pulseaudio", "network", "bluetooth",  "backlight",  "battery", "tray", "clock"],
   "cpu": {
     "interval": 10,
     "format": "{}%  ",
@@ -57,7 +62,7 @@
     "format-disconnected": "⚠",
     "tooltip-format-wifi": "{essid} ({signalStrength}%)\n\n{ifname} via {gwaddr} ",
     "tooltip-format-ethernet": "{ipaddr}/{cidr}\n\n{ifname} via {gwaddr} ",
-    // "on-click": ""
+    "on-click": "nm-connection-editor"
   },
   "backlight": {
     "format": "{percent}% {icon}",
@@ -82,5 +87,5 @@
     "format": "{:%I:%M %p}",
     "format-alt": "{:%d %h %Y}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
-  }
+  },
 }
