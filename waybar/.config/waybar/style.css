@@ -1,8 +1,8 @@
 * {
   /* `otf-font-awesome` is required to be installed for icons */
-  font-family: sans-serif;
+  font-family: FontAwesome, IBM Plex Mono;
   font-weight: 500;
-  font-size: 12px;
+  font-size: 12.5px;
 }
 
 window#waybar {
@@ -10,6 +10,11 @@ window#waybar {
   color: #ffffff;
   transition-property: background-color;
   transition-duration: 0.5s;
+}
+
+/* make waybar floating */
+window#waybar > * {
+  padding: 0 10px;
 }
 
 window#waybar.hidden {
@@ -42,11 +47,12 @@ button:hover {
 }
 
 #workspaces button.active {
-  background-color: #2980b9;
+  background-color: #ffffff;
+  color: #000000;
 }
 
 #workspaces button.urgent {
-  background-color: #eb4d4b;
+  background-color: #ff0000;
 }
 
 #mode {
@@ -72,8 +78,7 @@ button:hover {
 #idle_inhibitor,
 #scratchpad,
 #mpd {
-  padding: 0 5px;
-  border-radius: 5px;
+  padding: 0 6px;
   color: #ffffff;
 }
 
@@ -93,19 +98,7 @@ button:hover {
 }
 
 #clock {
-  background-color: #64727d;
   font-weight: 900;
-}
-
-#battery {
-  background-color: #ffffff;
-  color: #000000;
-}
-
-#battery.charging,
-#battery.plugged {
-  color: #ffffff;
-  background-color: #26a65b;
 }
 
 @keyframes blink {
@@ -113,6 +106,10 @@ button:hover {
     background-color: #ffffff;
     color: #000000;
   }
+}
+
+#battery {
+  color: #ffffff;
 }
 
 #battery.critical:not(.charging) {
@@ -130,47 +127,48 @@ label:focus {
 }
 
 #cpu {
-  background-color: #2ecc71;
-  color: #000000;
+  color: #ffffff;
 }
 
 #memory {
-  background-color: #9b59b6;
+  color: #ffffff;
 }
 
 #disk {
-  background-color: #964b00;
+  color: #ffffff;
 }
 
 #backlight {
-  background-color: #90b1b1;
+  color: #ffffff;
 }
 
 #network {
-  background-color: #2980b9;
+  color: #ffffff;
 }
 
 #network.disconnected {
-  /* background-color: #f53c3c; */
-  background-color: #808080;
+  color: #808080;
 }
 
 #bluetooth {
-  background-color: #0082fc;
+  color: #808080;
 }
+
+#bluetooth.connected {
+  color: #ffffff;
+}
+
 #bluetooth.disabled,
 #bluetooth.off {
-  background-color: #808080;
+  color: #808080;
 }
 
 #pulseaudio {
-  background-color: #f1c40f;
-  color: #000000;
+  color: #ffffff;
 }
 
 #pulseaudio.muted {
-  background-color: #90b1b1;
-  color: #2a5c45;
+  color: #808080;
 }
 
 #wireplumber {
@@ -209,7 +207,7 @@ label:focus {
 }
 
 #tray {
-  background-color: #2980b9;
+  background-color: #555555;
 }
 
 #tray > .passive {

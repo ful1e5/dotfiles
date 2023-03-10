@@ -214,14 +214,14 @@ require('packer').startup({
       {
         '~/GitHub/projekt0n/github-nvim-theme',
         config = function()
-          pcall(require, 'ful1e5.themes.github')
+          -- pcall(require, 'ful1e5.themes.github')
         end,
       },
 
       {
         '~/GitHub/projekt0n/caret.nvim',
         config = function()
-          -- pcall(require, 'ful1e5.themes.caret')
+          pcall(require, 'ful1e5.themes.caret')
         end,
       },
     })

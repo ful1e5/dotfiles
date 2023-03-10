@@ -11,9 +11,9 @@ require('github-theme').setup({
   -- transparent = true,
   overrides = function(_)
     return {
-      Visual = { style = 'inverse' },
+      -- Visual = { style = 'inverse' },
       Search = { style = 'inverse' },
     }
   end,
-  dev = true,
+  -- dev = true,
 })
