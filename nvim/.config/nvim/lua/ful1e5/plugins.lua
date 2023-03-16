@@ -60,6 +60,16 @@ require('packer').startup({
       { 'nanotee/luv-vimdocs' },
     })
 
+    -- Nvim tree
+    use({
+      'nvim-tree/nvim-tree.lua',
+      -- event = 'BufEnter',
+      requires = { 'nvim-tree/nvim-web-devicons', '~/GitHub/projekt0n/circles.nvim' },
+      config = function()
+        pcall(require, 'ful1e5.plugins.nvim-tree')
+      end,
+    })
+
     -- LSP
     use({
       'williamboman/mason.nvim',
@@ -114,16 +124,6 @@ require('packer').startup({
       requires = { 'nvim-lua/plenary.nvim' },
       config = function()
         pcall(require, 'ful1e5.plugins.null-ls')
-      end,
-    })
-
-    -- Nvim tree
-    use({
-      'nvim-tree/nvim-tree.lua',
-      event = 'BufEnter',
-      requires = { 'nvim-tree/nvim-web-devicons', '~/GitHub/projekt0n/circles.nvim' },
-      config = function()
-        pcall(require, 'ful1e5.plugins.nvim-tree')
       end,
     })
 
@@ -214,14 +214,14 @@ require('packer').startup({
       {
         '~/GitHub/projekt0n/github-nvim-theme',
         config = function()
-          -- pcall(require, 'ful1e5.themes.github')
+          pcall(require, 'ful1e5.themes.github')
         end,
       },
 
       {
         '~/GitHub/projekt0n/caret.nvim',
         config = function()
-          pcall(require, 'ful1e5.themes.caret')
+          -- pcall(require, 'ful1e5.themes.caret')
         end,
       },
     })

@@ -151,7 +151,7 @@ label:focus {
 }
 
 #bluetooth {
-  color: #808080;
+  color: #cccccc;
 }
 
 #bluetooth.connected {

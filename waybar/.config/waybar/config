@@ -60,9 +60,10 @@
     "format-wifi": "",
     "format-ethernet": "󰈀",
     "format-linked": "{ifname} (No IP) ",
-    "format-disconnected": "⚠",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n\n{ifname} via {gwaddr} ",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n\n",
     "tooltip-format-ethernet": "{ipaddr}/{cidr}\n\n{ifname} via {gwaddr} ",
+    "format-disconnected": "⚠",
+    "tooltip-format-disconnected": "Disconnected",
     "on-click": "nm-connection-editor"
   },
   "backlight": {

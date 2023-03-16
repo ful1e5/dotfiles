@@ -46,6 +46,12 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
     -- Set the omnifunc for the current buffer
     vim.cmd.setlocal('omnifunc=v:lua.vim.lsp.omnifunc')
+
+    vim.lsp.handlers['textDocument/publishDiagnostics'] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+      virtual_text = {
+        prefix = vim.g.circles_lsp_prefix_icon,
+      },
+    })
   end,
 })
 
