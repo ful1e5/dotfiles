@@ -38,7 +38,9 @@ map('n', '-', '<C-x>')
 -- Buffer
 map('n', '<space>]', vim.cmd.bnext)
 map('n', '<space>[', vim.cmd.bprev)
-map('n', '<space><Esc>', vim.cmd.bdelete)
+map('n', '<space><Esc>', function()
+  vim.api.nvim_buf_delete(0, { force = true })
+end)
 map('n', '<C-d>', ':%bd!<CR>')
 
 -- Window navigation
@@ -66,10 +68,10 @@ map('n', '<space>so', function()
 end)
 
 -- J & K moments in Markdown
-vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
+vim.api.nvim_create_autocmd({ 'BufEnter' }, {
   pattern = { '*.md', '*.html', '*.txt', 'text' },
   callback = function()
-    vim.opt.wrap = true
+    vim.cmd('setlocal wrap')
     map({ 'n', 'v' }, 'j', 'gj', { noremap = true, silent = true, buffer = true })
     map({ 'n', 'v' }, 'k', 'gk', { noremap = true, silent = true, buffer = true })
   end,

@@ -53,8 +53,8 @@ vim.opt.relativenumber = true
 vim.wo.cursorline = true -- Enable highlighting of the current line
 vim.wo.signcolumn = 'yes:2' -- Always show the signcolumn, otherwise it would shift the text each time
 
-vim.api.nvim_win_set_option(0, 'scrolloff', 10)
-vim.api.nvim_win_set_option(0, 'sidescrolloff', 30)
+vim.wo.scrolloff = 10
+vim.wo.sidescrolloff = 35
 
 vim.o.backup = false -- This is recommended by coc
 vim.o.swapfile = false

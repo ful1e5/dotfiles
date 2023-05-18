@@ -214,7 +214,14 @@ require('packer').startup({
       {
         '~/GitHub/projekt0n/github-nvim-theme',
         config = function()
-          pcall(require, 'ful1e5.themes.github')
+          require('ful1e5.themes.github')
+        end,
+      },
+
+      {
+        '~/GitHub/nightfox.nvim',
+        config = function()
+          -- pcall(require, 'ful1e5.themes.nightfox')
         end,
       },
 

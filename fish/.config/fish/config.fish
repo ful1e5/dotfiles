@@ -38,6 +38,9 @@ alias sk="screenkey --window --opacity '1.0'"
 # KDE
 alias logout="loginctl terminate-user $USER"
 
+# DroidCam
+alias kk="killall droidcam-cli ffplay mobcam"
+
 # Stream song-grab
 # alias gsvlc="VERBOSE=true OUTPUT_DIR=./.output ./Github/grab-song/grab-song.sh vlc"
 # alias gscele="VERBOSE=true OUTPUT_DIR=./.output ./Github/grab-song/grab-song.sh"
@@ -49,3 +52,4 @@ alias .nvim="cd ~/.dotfiles/nvim/.config/nvim && nvim lua/ful1e5/plugins.lua"
 alias .hypr="cd ~/.dotfiles/hyprland/.config/hypr && nvim hyprland.conf"
 alias .kitty="cd ~/.dotfiles/kitty/.config/kitty && nvim kitty.conf"
 alias .packer="cd ~/.local/share/nvim/site/pack/packer"
+alias .relx="cd ~/Videos/Relax\ Sadiq/"
