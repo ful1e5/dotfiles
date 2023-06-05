@@ -219,16 +219,9 @@ require('packer').startup({
       },
 
       {
-        '~/GitHub/nightfox.nvim',
-        config = function()
-          -- pcall(require, 'ful1e5.themes.nightfox')
-        end,
-      },
-
-      {
         '~/GitHub/projekt0n/caret.nvim',
         config = function()
-          -- pcall(require, 'ful1e5.themes.caret')
+          -- require('ful1e5.themes.caret')
         end,
       },
     })
