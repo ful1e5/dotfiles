@@ -60,11 +60,11 @@
     "format-wifi": "",
     "format-ethernet": "󰈀",
     "format-linked": "{ifname} (No IP) ",
-    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n\n",
+    "tooltip-format-wifi": "{essid} ({signalStrength}%)\n{ipaddr}/{cidr}\n\n{ifname} via {gwaddr}",
     "tooltip-format-ethernet": "{ipaddr}/{cidr}\n\n{ifname} via {gwaddr} ",
     "format-disconnected": "⚠",
     "tooltip-format-disconnected": "Disconnected",
-    "on-click": "nm-connection-editor"
+    "on-click": "kitty nmtui"
   },
   "backlight": {
     "format": "{percent}% {icon}",
