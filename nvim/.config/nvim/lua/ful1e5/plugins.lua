@@ -39,22 +39,6 @@ require('packer').startup({
       end,
     })
 
-    use({
-      'j-hui/fidget.nvim',
-      tag = 'legacy',
-      config = function()
-        require('fidget').setup({
-          text = {
-            spinner = 'square_corners',
-            done = ' ',
-          },
-          window = {
-            border = 'rounded',
-          },
-        })
-      end,
-    })
-
     -- Lua docs
     use({
       { 'milisims/nvim-luaref' },
@@ -268,6 +252,22 @@ require('packer').startup({
       event = 'BufRead',
       config = function()
         require('Comment').setup()
+      end,
+    })
+
+    use({
+      'j-hui/fidget.nvim',
+      branch = 'legacy',
+      config = function()
+        require('fidget').setup({
+          text = {
+            spinner = 'square_corners',
+            done = ' ',
+          },
+          window = {
+            border = 'rounded',
+          },
+        })
       end,
     })
   end,
