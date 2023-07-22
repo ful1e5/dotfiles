@@ -9,4 +9,6 @@ require('github-theme').setup({
   },
 })
 
+vim.g.github_theme_debug = true
+
 vim.cmd('colorscheme github_dark')

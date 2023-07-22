@@ -2,7 +2,7 @@
 local signs = {
   Error = ' ',
   Warn = ' ',
-  Hint = '硫',
+  Hint = '󰓏',
   Info = ' ',
 }
 

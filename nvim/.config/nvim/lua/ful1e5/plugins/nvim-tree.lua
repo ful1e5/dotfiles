@@ -2,7 +2,7 @@ local glyphs = {}
 
 local installed, circles = pcall(require, 'circles')
 if installed then
-  circles.setup({ icons = { empty = '', filled = '', lsp_prefix = '' } })
+  circles.setup({ icons = { empty = '', filled = '', lsp_prefix = '' } })
   glyphs = circles.get_nvimtree_glyphs()
 end
 

@@ -197,10 +197,10 @@ require('packer').startup({
     -- ColorScheme
     use({
       {
-        'projekt0n/github-nvim-theme',
-        -- '~/GitHub/projekt0n/github-nvim-theme',
+        -- 'projekt0n/github-nvim-theme',
+        '~/GitHub/projekt0n/github-nvim-theme',
         config = function()
-          -- require('ful1e5.themes.github')
+          require('ful1e5.themes.github')
         end,
       },
 
@@ -208,7 +208,7 @@ require('packer').startup({
         'projekt0n/caret.nvim',
         -- '~/GitHub/projekt0n/caret.nvim',
         config = function()
-          require('ful1e5.themes.caret')
+          -- require('ful1e5.themes.caret')
         end,
       },
     })
