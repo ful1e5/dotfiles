@@ -12,13 +12,14 @@ local on_attach = function(client, bufnr)
       buffer = bufnr,
       callback = function()
         vim.lsp.buf.format({
-          timeout = -1,
+          bufnr = bufnr,
+          async = false,
           filter = function(c)
             return c.name == 'null-ls'
           end,
-          bufnr = bufnr,
         })
       end,
+      desc = '[lsp] format on save',
     })
   end
 end
@@ -28,9 +29,7 @@ null_ls.setup({
   on_attach = on_attach,
   sources = {
     -- prettier
-    null_ls.builtins.formatting.prettier.with({
-      extra_filetypes = { 'toml' },
-    }),
+    null_ls.builtins.formatting.prettierd,
 
     -- fish
     null_ls.builtins.diagnostics.fish,

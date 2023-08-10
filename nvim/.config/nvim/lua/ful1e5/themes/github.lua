@@ -7,6 +7,11 @@ require('github-theme').setup({
       search = true,
     },
   },
+  groups = {
+    all = {
+      ['@label.jsonc'] = { link = '@label.json' },
+    },
+  },
 })
 
 vim.g.github_theme_debug = true
