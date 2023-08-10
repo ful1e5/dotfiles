@@ -1,5 +1,11 @@
+# Load completions
+for file in ~/.config/fish/completions/*.fish
+    source $file
+end
+
 # PATHS
 fish_add_path $HOME/.local/share/bob/nvim-bin # bob
+
 # fish_add_path $HOME/.cargo/bin # Cargo
 # fish_add_path $HOME/GitHub/flutter/bin # Flutter
 
