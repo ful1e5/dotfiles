@@ -6,6 +6,11 @@ require('github-theme').setup({
       visual = true,
       search = true,
     },
+    darken = {
+      sidebars = {
+        enabled = false,
+      },
+    },
   },
   groups = {
     all = {

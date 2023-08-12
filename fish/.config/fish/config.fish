@@ -41,6 +41,9 @@ alias ll="exa -l --icons"
 # screenkey
 alias sk="screenkey --window --opacity '1.0'"
 
+# neovide
+alias nv="neovide"
+
 # KDE
 alias logout="loginctl terminate-user $USER"
 
