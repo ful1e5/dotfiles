@@ -1,6 +1,6 @@
-local jsonls = {}
+local yamlls = {}
 
-jsonls.setup = function()
+yamlls.setup = function()
   return {
     settings = {
       yaml = {
@@ -24,4 +24,4 @@ jsonls.setup = function()
   }
 end
 
-return jsonls
+return yamlls

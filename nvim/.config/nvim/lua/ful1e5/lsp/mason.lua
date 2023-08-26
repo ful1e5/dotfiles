@@ -13,6 +13,7 @@ local servers = {
   'tsserver',
   'esbonio',
   'dockerls',
+  'efm',
 }
 
 require('mason').setup({
@@ -32,16 +33,16 @@ require('mason-lspconfig').setup({
 })
 
 local lspconfig = require('lspconfig')
-local lsp_defaults = lspconfig.util.default_config
-lsp_defaults.capabilities =
-  vim.tbl_deep_extend('force', lsp_defaults.capabilities, require('cmp_nvim_lsp').default_capabilities())
+local opts = lspconfig.util.default_config
+opts.capabilities = vim.tbl_deep_extend('force', opts.capabilities, require('cmp_nvim_lsp').default_capabilities())
 
 -- Specify the default options which we'll use to setup all servers
 for _, name in ipairs(servers) do
   -- Enhance the default opts with the server-specific ones
-  pcall(function()
-    lsp_defaults = require('ful1e5.lsp.servers.' .. name).setup()
-  end)
+  local status, server = pcall(require, 'ful1e5.lsp.servers.' .. name)
+  if status then
+    opts = server.setup()
+  end
 
-  lspconfig[name].setup(lsp_defaults)
+  lspconfig[name].setup(opts)
 end

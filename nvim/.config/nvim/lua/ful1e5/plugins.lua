@@ -65,7 +65,7 @@ require('packer').startup({
         { 'hrsh7th/cmp-nvim-lsp' },
       },
       config = function()
-        pcall(require, 'ful1e5.lsp.mason')
+        require('ful1e5.lsp.mason')
       end,
     })
 
@@ -100,15 +100,6 @@ require('packer').startup({
       'nvim-lua/plenary.nvim',
       config = function()
         vim.keymap.set('n', '<space>t', '<Plug>PlenaryTestFile', { noremap = true })
-      end,
-    })
-
-    use({
-      'jose-elias-alvarez/null-ls.nvim',
-      event = 'BufRead',
-      requires = { 'nvim-lua/plenary.nvim' },
-      config = function()
-        pcall(require, 'ful1e5.plugins.null-ls')
       end,
     })
 
@@ -205,8 +196,8 @@ require('packer').startup({
       },
 
       {
-        'projekt0n/caret.nvim',
-        -- '~/GitHub/projekt0n/caret.nvim',
+        -- 'projekt0n/caret.nvim',
+        '~/GitHub/projekt0n/caret.nvim',
         config = function()
           -- require('ful1e5.themes.caret')
         end,

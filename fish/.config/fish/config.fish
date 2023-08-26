@@ -6,7 +6,7 @@ end
 # PATHS
 fish_add_path $HOME/.local/share/bob/nvim-bin # bob
 
-# fish_add_path $HOME/.cargo/bin # Cargo
+fish_add_path $HOME/.cargo/bin # Cargo
 # fish_add_path $HOME/GitHub/flutter/bin # Flutter
 
 # disabled fish's default greeting message
@@ -17,6 +17,8 @@ fish_vi_key_bindings
 
 # Python
 alias p="python"
+alias penv="source .venv/bin/activate.fish"
+alias dpenv="deactivate"
 
 
 # Pyenv
