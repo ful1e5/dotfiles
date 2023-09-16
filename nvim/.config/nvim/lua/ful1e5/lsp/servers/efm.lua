@@ -33,7 +33,7 @@ local isort = {
 }
 
 local prettierd = {
-  formatCommand = 'prettierd ${INPUT} ${--range-start=charStart} ${--range-end=charEnd} ${--tab-width=tabSize}',
+  formatCommand = 'prettierd ${INPUT} ${--range-start=charStart} ${--range-end=charEnd} ${--tab-width=2}',
   formatStdin = true,
   rootMarkers = {
     '.prettierrc',
@@ -48,8 +48,14 @@ local prettierd = {
   },
 }
 
+local shfmt = {
+  formatCommand = 'shfmt -ci -i 2 -s -bn',
+  formatStdin = true,
+}
+
 local shellcheck = {
-  lintCommand = 'shellcheck',
+  lintCommand = 'shellcheck -f gcc -x',
+  listSource = 'shellcheck',
   lintFormats = {
     '%f:%l:%c: %trror: %m',
     '%f:%l:%c: %tarning: %m',
@@ -57,8 +63,9 @@ local shellcheck = {
   },
 }
 
-local shfmt = {
-  formatCommand = 'shfmt ${-i:tabWidth}',
+local xmllint = {
+  formatCommand = 'xmllint --format --recover -',
+  formatStdin = true,
 }
 
 local languages = {
@@ -75,6 +82,8 @@ local languages = {
   css = { prettierd },
   markdown = { prettierd },
   sh = { shfmt, shellcheck },
+  svg = { xmllint },
+  xml = { xmllint },
 }
 
 local augroup = vim.api.nvim_create_augroup('LspFormatting', {})
@@ -103,6 +112,7 @@ efm.setup = function()
             vim.lsp.buf.format({
               bufnr = bufnr,
               async = false,
+              timeout_ms = 8000,
               filter = function(c)
                 return c.name == 'efm'
               end,

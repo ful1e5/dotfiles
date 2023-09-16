@@ -63,7 +63,7 @@ vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWinEnter' }, {
   group = user_cmds,
   pattern = { '*.md', '*.html', '*.txt', 'text' },
   callback = function()
-    vim.opt.wrap = true
+    vim.cmd('setl wrap')
     bufmap({ 'n', 'v' }, 'j', 'gj')
     bufmap({ 'n', 'v' }, 'k', 'gk')
   end,

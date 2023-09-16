@@ -13,6 +13,7 @@ local servers = {
   'tsserver',
   'esbonio',
   'dockerls',
+  'bashls',
   'efm',
 }
 

@@ -112,9 +112,11 @@ require('packer').startup({
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
+        { 'prochri/telescope-all-recent.nvim', requires = { 'kkharji/sqlite.lua' } },
       },
       config = function()
-        pcall(require, 'ful1e5.plugins.telescope')
+        require('telescope-all-recent').setup({})
+        require('ful1e5.plugins.telescope')
       end,
     })
 
@@ -228,6 +230,15 @@ require('packer').startup({
       event = 'BufRead',
       config = function()
         pcall(require, 'ful1e5.plugins.nvim-surround')
+      end,
+    })
+
+    -- Spider w,e,b motions
+    use({
+      'chrisgrieser/nvim-spider',
+      event = 'BufRead',
+      config = function()
+        require('ful1e5.plugins.nvim-spider')
       end,
     })
 
