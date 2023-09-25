@@ -1,3 +1,4 @@
+
 # Load completions
 for file in ~/.config/fish/completions/*.fish
     source $file
@@ -32,7 +33,8 @@ set biscuit_show_branch_name 1
 # fzf config
 set -g FZF_COMPLETE 2 # allows walking candidates with TAB
 set -U FZF_DISABLE_KEYBINDINGS 1 # disable fzf.fish default keybindings
-fzf_configure_bindings --history=\ch --directory=\cp --git_log --git_status --variables --processes # custom keybinding
+set fzf_fd_opts --hidden -E .git -E .virtualenvs -E .cargo -E .cache -E .fonts -E node_modules
+fzf_configure_bindings --history=\ch --directory=\cp --git_log --git_status --variables --processes
 
 # Resource fish config file
 alias resource="source $__fish_config_dir/config.fish"

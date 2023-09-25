@@ -192,8 +192,10 @@ require('packer').startup({
       {
         -- 'projekt0n/github-nvim-theme',
         '~/GitHub/projekt0n/github-nvim-theme',
+        -- 'tmillr/github-nvim-theme',
+        branch = 'main',
         config = function()
-          require('ful1e5.themes.github')
+          -- require('ful1e5.themes.github')
         end,
       },
 
@@ -201,7 +203,7 @@ require('packer').startup({
         -- 'projekt0n/caret.nvim',
         '~/GitHub/projekt0n/caret.nvim',
         config = function()
-          -- require('ful1e5.themes.caret')
+          require('ful1e5.themes.caret')
         end,
       },
     })
@@ -251,9 +253,12 @@ require('packer').startup({
     -- Comment
     use({
       'numToStr/Comment.nvim',
+      requires = { 'JoosepAlviste/nvim-ts-context-commentstring' },
       event = 'BufRead',
       config = function()
-        require('Comment').setup()
+        require('Comment').setup({
+          pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+        })
       end,
     })
 
