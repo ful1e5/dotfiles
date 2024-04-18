@@ -20,7 +20,9 @@ local black = {
 }
 
 local flake8 = {
-  lintCommand = "flake8 --max-line-length 160 --format '%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s' --stdin-display-name ${INPUT} -",
+  lintCommand = 'flake8 --max-line-length 160 --format '
+    .. "'%(path)s:%(row)d:%(col)d: %(code)s %(code)s %(text)s '"
+    .. '--stdin-display-name ${INPUT} -',
   lintStdin = true,
   lintIgnoreExitCode = true,
   lintFormats = { '%f:%l:%c: %t%n%n%n %m' },
@@ -32,8 +34,26 @@ local isort = {
   formatStdin = true,
 }
 
-local prettierd = {
-  formatCommand = 'prettierd ${INPUT} ${--range-start=charStart} ${--range-end=charEnd} ${--tab-width=2}',
+-- local prettierd = {
+--   formatCommand = 'prettierd ${INPUT} ${--range-start=charStart} ${--range-end=charEnd} ${--tab-width=2}',
+--   formatStdin = true,
+--   rootMarkers = {
+--     '.prettierrc',
+--     '.prettierrc.json',
+--     '.prettierrc.js',
+--     '.prettierrc.yml',
+--     '.prettierrc.yaml',
+--     '.prettierrc.json5',
+--     '.prettierrc.mjs',
+--     '.prettierrc.cjs',
+--     '.prettierrc.toml',
+--   },
+-- }
+
+local prettier = {
+  formatCommand = "prettier --stdin --stdin-filepath '${INPUT}' "
+    .. '${--range-start=charStart} ${--range-end=charEnd} '
+    .. '${--tab-width:tabSize} ${--use-tabs:!insertSpaces}',
   formatStdin = true,
   rootMarkers = {
     '.prettierrc',
@@ -71,18 +91,18 @@ local xmllint = {
 local languages = {
   lua = { stylua, luacheck },
   python = { black, isort, flake8 },
-  typescript = { prettierd },
-  javascript = { prettierd },
-  typescriptreact = { prettierd },
-  javascriptreact = { prettierd },
-  yaml = { prettierd },
-  json = { prettierd },
-  html = { prettierd },
-  scss = { prettierd },
-  css = { prettierd },
-  markdown = { prettierd },
+  typescript = { prettier },
+  javascript = { prettier },
+  typescriptreact = { prettier },
+  javascriptreact = { prettier },
+  yaml = { prettier },
+  json = { prettier },
+  html = { prettier },
+  scss = { prettier },
+  css = { prettier },
+  markdown = { prettier },
   sh = { shfmt, shellcheck },
-  svg = { xmllint },
+  -- svg = { xmllint },
   xml = { xmllint },
 }
 

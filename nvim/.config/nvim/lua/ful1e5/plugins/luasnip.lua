@@ -66,11 +66,15 @@ ls.add_snippets('lua', {
   s('mfn', { t('M.'), i(1), t(' = function( '), i(2), t({ ')', '\t' }), i(3), t({ '', 'end' }) }),
 })
 
-ls.add_snippets('typescript', {
+local js_snippets = {
   s('log', { t('console.log('), i(1), t(')') }),
   s('err', { t('console.error('), i(1), t(')') }),
   s('oimp', { t('import { '), i(1), t(' } from "'), i(2), t('"') }),
   s('exp', { t('export { '), i(1), t(' }"') }),
-})
+}
+
+ls.add_snippets('typescript', js_snippets)
+ls.add_snippets('typescriptreact', js_snippets)
+ls.add_snippets('javascript', js_snippets)
 
 require('luasnip.loaders.from_vscode').lazy_load()

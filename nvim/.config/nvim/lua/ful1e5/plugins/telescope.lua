@@ -53,6 +53,6 @@ end)
 
 -- Builtin key-binding
 map('n', '<C-f>', builtin.live_grep)
-map('n', '<f1>', builtin.help_tags)
+map('n', '<leader><f1>', builtin.help_tags)
 map('n', 'z=', builtin.spell_suggest)
-map('n', 'hi', builtin.highlights)
+map('n', '<leader>hi', builtin.highlights)

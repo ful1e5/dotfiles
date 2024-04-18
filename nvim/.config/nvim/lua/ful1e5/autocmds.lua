@@ -87,3 +87,12 @@ vim.api.nvim_create_autocmd('TextYankPost', {
     vim.highlight.on_yank({ higroup = 'Visual', timeout = 120 })
   end,
 })
+
+-- Disable diagnostics in .env file
+vim.api.nvim_create_autocmd('BufEnter', {
+  pattern = '.env',
+  group = user_cmds,
+  callback = function(args)
+    vim.diagnostic.disable(args.buf)
+  end,
+})

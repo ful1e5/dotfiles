@@ -187,6 +187,12 @@ require('packer').startup({
       end,
     })
 
+    -- use({
+    --   'vim-airline/vim-airline',
+    --   requires = { 'vim-airline/vim-airline-themes' },
+    --   event = 'BufEnter',
+    -- })
+
     -- ColorScheme
     use({
       {
@@ -195,7 +201,7 @@ require('packer').startup({
         -- 'tmillr/github-nvim-theme',
         branch = 'main',
         config = function()
-          -- require('ful1e5.themes.github')
+          require('ful1e5.themes.github')
         end,
       },
 
@@ -203,7 +209,7 @@ require('packer').startup({
         -- 'projekt0n/caret.nvim',
         '~/GitHub/projekt0n/caret.nvim',
         config = function()
-          require('ful1e5.themes.caret')
+          -- require('ful1e5.themes.caret')
         end,
       },
     })
@@ -259,6 +265,14 @@ require('packer').startup({
         require('Comment').setup({
           pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
         })
+      end,
+    })
+
+    -- Indent Blankline
+    use({
+      'lukas-reineke/indent-blankline.nvim',
+      config = function()
+        require('ibl').setup()
       end,
     })
 

@@ -5,6 +5,7 @@ require('ful1e5.lsp.visual')
 local servers = {
   'cssls',
   'tailwindcss',
+  'prismals',
   'jsonls',
   'yamlls',
   'taplo',
