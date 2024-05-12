@@ -4,6 +4,7 @@ require('ful1e5.lsp.visual')
 -- LSP Servers
 local servers = {
   'cssls',
+  'html',
   'tailwindcss',
   'prismals',
   'jsonls',

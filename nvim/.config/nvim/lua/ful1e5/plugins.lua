@@ -113,6 +113,7 @@ require('packer').startup({
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
         { 'prochri/telescope-all-recent.nvim', requires = { 'kkharji/sqlite.lua' } },
+        { 'xiyaowong/telescope-emoji.nvim' },
       },
       config = function()
         require('telescope-all-recent').setup({})
@@ -247,6 +248,30 @@ require('packer').startup({
       event = 'BufRead',
       config = function()
         require('ful1e5.plugins.nvim-spider')
+      end,
+    })
+
+    -- Neovim toggle Terminal
+    use({
+      'akinsho/toggleterm.nvim',
+      tag = '*',
+      config = function()
+        if vim.g.neovide then
+          require('toggleterm').setup({
+            shell = '/bin/fish',
+            size = function(term)
+              if term.direction == 'horizontal' then
+                return 15
+              elseif term.direction == 'vertical' then
+                return vim.o.columns * 0.4
+              end
+            end,
+            on_open = function(term)
+              vim.cmd('startinsert!')
+              vim.api.nvim_buf_set_keymap(term.bufnr, 'n', 'q', '<cmd>close<CR>', { noremap = true, silent = true })
+            end,
+          })
+        end
       end,
     })
 

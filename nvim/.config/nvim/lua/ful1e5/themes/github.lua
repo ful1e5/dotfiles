@@ -1,9 +1,11 @@
 require('github-theme').setup({
   options = {
+    transparent = true,
     hide_nc_statusline = false,
+    hide_end_of_buffer = false,
     inverse = {
       match_paren = true,
-      visual = true,
+      -- visual = true,
       search = true,
     },
     darken = {

@@ -33,6 +33,9 @@ require('telescope').setup({
 -- To get fzf loaded and working with telescope
 require('telescope').load_extension('fzf')
 
+-- To get emoji loaded and working with telescope
+require('telescope').load_extension('emoji')
+
 local builtin = require('telescope.builtin')
 
 local map = vim.keymap.set

@@ -61,7 +61,7 @@ mouse_map left click ungrabbed no_op
 
 
 # BEGIN_KITTY_THEME
-# Github Light
+# Github Dark Dimmed
 include current-theme.conf
 # END_KITTY_THEME
 # background #2a2d25
