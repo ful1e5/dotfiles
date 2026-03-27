@@ -18,7 +18,6 @@ require('nvim-treesitter.configs').setup({
     },
   },
   auto_install = true,
-  autotag = { enable = true },
   indent = { enable = true },
   highlight = {
     -- `false` will disable the whole extension

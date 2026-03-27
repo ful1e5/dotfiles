@@ -78,16 +78,16 @@ require('packer').startup({
         { 'onsails/lspkind.nvim' },
 
         -- Snippet Engine
-        { 'L3MON4D3/LuaSnip', tag = 'v1.2.1', run = 'make install_jsregexp' },
+        { 'L3MON4D3/LuaSnip',             tag = 'v1.2.1',         run = 'make install_jsregexp' },
 
         -- vacode-like snippets
         { 'rafamadriz/friendly-snippets', event = 'InsertCharPre' },
 
         -- nvim-cmp plugins
-        { 'hrsh7th/cmp-buffer', after = 'nvim-cmp' },
-        { 'hrsh7th/cmp-path', after = 'nvim-cmp' },
-        { 'hrsh7th/cmp-nvim-lua', after = 'nvim-cmp' },
-        { 'saadparwaiz1/cmp_luasnip', after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-buffer',           after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-path',             after = 'nvim-cmp' },
+        { 'hrsh7th/cmp-nvim-lua',         after = 'nvim-cmp' },
+        { 'saadparwaiz1/cmp_luasnip',     after = 'nvim-cmp' },
       },
       config = function()
         pcall(require, 'ful1e5.plugins.luasnip')
@@ -112,12 +112,48 @@ require('packer').startup({
         { 'nvim-lua/popup.nvim' },
         { 'nvim-lua/plenary.nvim' },
         { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' },
-        { 'prochri/telescope-all-recent.nvim', requires = { 'kkharji/sqlite.lua' } },
+        { 'prochri/telescope-all-recent.nvim',        requires = { 'kkharji/sqlite.lua' } },
         { 'xiyaowong/telescope-emoji.nvim' },
       },
       config = function()
         require('telescope-all-recent').setup({})
         require('ful1e5.plugins.telescope')
+      end,
+    })
+
+    -- Claude Code
+    use({
+      'coder/claudecode.nvim',
+      requires = { 'folke/snacks.nvim' },
+      config = function()
+        -- Initialise the plugin (equivalent to config = true)
+        require('claudecode').setup({})
+
+        -- Keybindings
+        local map = vim.keymap.set
+
+        -- Standard commands
+        map('n', '<leader>ac', '<cmd>ClaudeCode<cr>', { desc = 'Toggle Claude' })
+        map('n', '<leader>af', '<cmd>ClaudeCodeFocus<cr>', { desc = 'Focus Claude' })
+        map('n', '<leader>ar', '<cmd>ClaudeCode --resume<cr>', { desc = 'Resume Claude' })
+        map('n', '<leader>aC', '<cmd>ClaudeCode --continue<cr>', { desc = 'Continue Claude' })
+        map('n', '<leader>am', '<cmd>ClaudeCodeSelectModel<cr>', { desc = 'Select Claude model' })
+        map('n', '<leader>ab', '<cmd>ClaudeCodeAdd %<cr>', { desc = 'Add current buffer' })
+
+        -- Visual mode send
+        map('v', '<leader>as', '<cmd>ClaudeCodeSend<cr>', { desc = 'Send to Claude' })
+
+        -- Diff management
+        map('n', '<leader>aa', '<cmd>ClaudeCodeDiffAccept<cr>', { desc = 'Accept diff' })
+        map('n', '<leader>ad', '<cmd>ClaudeCodeDiffDeny<cr>', { desc = 'Deny diff' })
+
+        -- Filetree specific mapping
+        vim.api.nvim_create_autocmd('FileType', {
+          pattern = { 'NvimTree', 'neo-tree', 'oil', 'minifiles', 'netrw' },
+          callback = function()
+            map('n', '<leader>as', '<cmd>ClaudeCodeTreeAdd<cr>', { buffer = true, desc = 'Add file' })
+          end,
+        })
       end,
     })
 
@@ -150,7 +186,14 @@ require('packer').startup({
       },
 
       { 'nvim-treesitter/playground', after = 'nvim-treesitter' },
-      { 'windwp/nvim-ts-autotag', after = 'nvim-treesitter' },
+
+      {
+        'windwp/nvim-ts-autotag',
+        after = { 'nvim-treesitter', 'nvim-cmp' },
+        config = function()
+          require('nvim-ts-autotag').setup({})
+        end,
+      },
       {
         'windwp/nvim-autopairs',
         after = { 'nvim-treesitter', 'nvim-cmp' },
@@ -232,6 +275,12 @@ require('packer').startup({
         require('markdowny').setup({ filetypes = { 'markdown', 'txt' } })
       end,
     })
+
+    -- Beautify Markdown
+    -- use({
+    --   'OXY2DEV/markview.nvim',
+    --   requires = { 'nvim-treesitter/nvim-treesitter', 'nvim-tree/nvim-web-devicons' },
+    -- })
 
     -- Surround
     use({

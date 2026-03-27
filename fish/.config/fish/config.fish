@@ -60,6 +60,7 @@ alias kk="killall droidcam-cli ffplay mobcam"
 
 # dotfiles
 alias .f="cd ~/.dotfiles"
+alias ful="cd ~/GitHub/ful1e5"
 alias .fish="cd ~/.dotfiles/fish/.config/fish && nvim config.fish"
 alias .nvim="cd ~/.dotfiles/nvim/.config/nvim && nvim lua/ful1e5/plugins.lua"
 alias .hypr="cd ~/.dotfiles/hyprland/.config/hypr && nvim hyprland.conf"
