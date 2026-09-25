@@ -2,7 +2,6 @@
 vim.api.nvim_create_user_command('ReloadConfig', function()
   require('plenary.reload').reload_module('ful1e5', true)
   vim.cmd.source('$MYVIMRC')
-  vim.cmd.PackerCompile()
 end, {})
 
 -- Inspect RGBA Color keymaps

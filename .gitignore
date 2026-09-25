@@ -1,2 +1,5 @@
 # neovim
 nvim/.config/nvim/plugin/packer_compiled.lua
+
+# Ignore local private credentials
+fish/.config/fish/conf.d/private_env.fish

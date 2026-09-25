@@ -1,6 +1,12 @@
-local cmp = require('cmp')
-local lspkind = require('lspkind')
-local luasnip = require('luasnip')
+-- Load dependencies with graceful fallbacks
+local ok_cmp, cmp = pcall(require, 'cmp')
+local ok_lspkind, lspkind = pcall(require, 'lspkind')
+local ok_luasnip, luasnip = pcall(require, 'luasnip')
+
+if not (ok_cmp and ok_lspkind and ok_luasnip) then
+  vim.notify('Failed to load cmp dependencies', vim.log.levels.WARN)
+  return
+end
 
 local c = {
   completion = {
@@ -83,4 +89,7 @@ c.sources = {
   { name = 'buffer', option = { keyword_length = 5 } },
 }
 
-cmp.setup(c)
+local ok, err = pcall(cmp.setup, c)
+if not ok then
+  vim.notify('Failed to setup cmp: ' .. tostring(err), vim.log.levels.ERROR)
+end

@@ -17,13 +17,13 @@ vim.opt.updatetime = 500
 vim.opt.termguicolors = true
 vim.g.t_Co = 256
 
-vim.opt.hidden = true -- Required to keep multiple buffers open multiple buffers
-vim.opt.pumheight = 10 -- Makes popup menu smaller
+vim.opt.hidden = true          -- Required to keep multiple buffers open multiple buffers
+vim.opt.pumheight = 10         -- Makes popup menu smaller
 
 vim.opt.fileencoding = 'utf-8' -- The encoding written to file
-vim.opt.cmdheight = 1 -- Less space for displaying messages
+vim.opt.cmdheight = 1          -- Less space for displaying messages
 
-vim.opt.conceallevel = 0 -- So that I can see `` in markdown files
+vim.opt.conceallevel = 0       -- So that I can see `` in markdown files
 
 -- 2-Space Intend
 vim.opt.autoindent = true
@@ -50,13 +50,13 @@ vim.opt.wrapscan = true
 vim.opt.number = true
 vim.opt.relativenumber = true
 
-vim.wo.cursorline = true -- Enable highlighting of the current line
+vim.wo.cursorline = true    -- Enable highlighting of the current line
 vim.wo.signcolumn = 'yes:2' -- Always show the signcolumn, otherwise it would shift the text each time
 
 vim.cmd([[set scrolloff=10]])
 vim.cmd([[set sidescrolloff=35]])
 
-vim.o.backup = false -- This is recommended by coc
+vim.o.backup = false      -- This is recommended by coc
 vim.o.swapfile = false
 vim.o.writebackup = false -- This is recommended by coc
 

@@ -26,7 +26,38 @@ end
 
 require('ful1e5.keymaps')
 require('ful1e5.options')
-require('ful1e5.plugins')
+
+-- Set up lazy.nvim plugin manager
+require('lazy').setup('ful1e5.lazy_plugins', {
+  defaults = {
+    lazy = true,
+  },
+  install = {
+    missing = true,
+  },
+  ui = {
+    border = 'rounded',
+  },
+  pkg = {
+    enabled = false,
+  },
+  performance = {
+    cache = { enabled = true },
+    rtp = {
+      disabled_plugins = {
+        'gzip',
+        'matchit',
+        'matchparen',
+        'netrwPlugin',
+        'tarPlugin',
+        'tohtml',
+        'vimballPlugin',
+        'zipPlugin',
+      },
+    },
+  },
+})
+
 require('ful1e5.autocmds')
 require('ful1e5.usercmds')
 require('ful1e5.statusline')
